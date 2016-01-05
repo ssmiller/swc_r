@@ -111,4 +111,41 @@ df <- cbind(df, myseq=seq(1,11,by=2))  #name the column at the same time as you 
 df<-cbind(df,caps=LETTERS[1:6]) #add the first six items as a column called caps
 df
 
-#remove columns in the dataframe
+#"remove columns" in the dataframe:
+#make a new dataframe with just the desired columns
+df2 <- df[c(1,2,3,8,11)]
+df <- df2[c(1,2,3,5)]
+
+df <- rbind(df,list('g',11,42.0,"G"))  #this will error due to having items with different classes
+df
+df$id <- as.character(df$id)  #changes everything in the id column to be a character, not a "factor"
+
+#If we want the column 'caps' to remain factor, then we need to add a new factor level
+class(df$caps)
+levels(df$caps) <- c(levels(df$caps),"G")
+class(df$caps)
+df <- rbind(df,list('g',11,42.0,"G"))
+df
+
+
+df[-7,]  #show all rows except for row 7
+df[-8,]  #show all rows except for row 8
+
+#if you want to remove multiple rows with NA, use na.omit(datafamename)
+df <- na.omit(df)
+
+#could also just ignore the na items during your analysis
+
+#To add two dataframes WITH MATCHING COLUMNS (add columns first as needed)
+rbind(df,df)
+#this makes your row names a little strange -- it appends a 1 to your original row name if they are duplicated
+
+df2 <-rbind(c(df, df), rownames=NULL)
+df2 <- rbind(df,df,make.row.names=FALSE)
+df2
+#This is the same as 
+df3<-(rbind(df,df))
+df3
+rownames(df3) <- NULL
+df3
+?rbind
