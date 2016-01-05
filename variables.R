@@ -1,5 +1,7 @@
 ls()
 #This is my test for commit
+dist10 <- rnorm(10)
+
 x<-1
 y <- x*2
 z <- y^2
