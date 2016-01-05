@@ -149,3 +149,38 @@ df3
 rownames(df3) <- NULL
 df3
 ?rbind
+
+#Create a data frame w/columns
+  #first name
+  #last name
+  #fav fruit
+#rbind info of your neighbor
+#cbind a logical column "is there anything you find confusing?"
+
+#we know that we don't want our strings to show as factor levels, so include in the data frame creation)
+my_df = data.frame("Stephanie","Miller","bananas", stringsAsFactors = F)
+names(my_df) <- c("first","last","favorite fruit")
+class(my_df$first)
+
+Trish_df <- data.frame(id=1,firstname='Trish',lastname="Koman",fruit="banana",stringsAsFactors=F)
+Trish_df
+#We have different columns - I don't need the ID column, so am removing
+Trish_df <- Trish_df[,-1]
+Trish_df
+
+#we have different column names - I renamed my column names to match hers
+names(my_df) <- names(Trish_df)
+
+combined_df <- rbind(my_df, Trish_df)
+combined_df
+
+class(combined_df$firstname)
+combined_df2 <- cbind(combined_df, confusing=as.logical("Is there anything you find confusing?"))
+class(combined_df2$confusing)
+
+combined_df2
+combined_df2$confusing[1] <- "Yes, plenty"  #I assigned a character answer instead of a logical - changed to character
+combined_df2$confusing <- c(T,F) #this will switch back to logical
+
+df4 <- cbind(combined_df2, my_example = c(1,18)) 
+df4
