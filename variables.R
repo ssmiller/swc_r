@@ -1,5 +1,7 @@
 #This is the document where I learn introductory R and Git.
 #January 5, 2016
+#WISE Software Carpentry Workshop Day 2
+
 dist10 <- rnorm(10)
 
 x<-1
