@@ -1,5 +1,5 @@
-ls()
-#This is my test for commit
+#This is the document where I learn introductory R and Git.
+#January 5, 2016
 dist10 <- rnorm(10)
 
 x<-1
